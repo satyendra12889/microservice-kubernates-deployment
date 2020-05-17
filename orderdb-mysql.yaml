@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: orderdb-mysql
+    labels:
+        app: orderdb-mysql
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: orderdb-mysql
+    template:
+        metadata:
+            labels:
+                app: orderdb-mysql
+        spec:
+            containers:
+            -   image: mysql:5.6
+                name: orderdb-mysql
+                args:
+                    - "--default-authentication-plugin=mysql_native_password"
+                env:
+                - name: MYSQL_ROOT_PASSWORD
+                   valueFrom:
+                    secretKeyRef:
+                        name: dbsecrets
+                        key: database-password
+                ports:
+                 - containerPort: 3306
+                   name: orderdb-mysql
+                volumeMounts:
+                    - name: orderdb-mysql-persistent-storage
+                      mountPath: /var/lib/mysql
+            volumes:
+                - name: orderdb-mysql-persistent-storage
+                  persistentVolumeClaim:
+                    claimName: orderdb
+                

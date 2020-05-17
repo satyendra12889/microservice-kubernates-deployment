@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: userservice
+  labels:
+    app: userservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: userservice
+  template:
+    metadata:
+      labels:
+        app: userservice
+    spec:
+      containers:
+      - name: userservice
+        image: satyendransit12/userservice
+        ports:
+        - containerPort: 8081
+        env:
+        - name: MYSQL_DB
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: database-name
+        - name: MYSQL_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: database-userdb-host
+        - name: MYSQL_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: database-userdb-port
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: dbsecrets
+              key: database-user
+        - name: MYSQL_PASS
+          valueFrom:
+            secretKeyRef:
+              name: dbsecrets
+              key: database-password

@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderdb-mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: orderdb-mysql
+  clusterIP: None

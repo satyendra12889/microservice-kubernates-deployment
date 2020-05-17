@@ -1,0 +1,22 @@
+apiVersion: app/v1
+kind: Deployment
+metadata: 
+    name: nagp-quotes-deployment
+    labels: 
+        app: nagp-quotes
+spec:
+    replicas: 3
+    selector: 
+        matchlabels:
+            app: nagp-quotes
+    template:
+        metadata:
+            labels:
+                app: nagp-quotes
+        spec: 
+            containers:
+            - name: nagp-quotes
+              image: swarajsaaj/nagp-quotes
+              ports:
+              - containerPort: 8080
+				
