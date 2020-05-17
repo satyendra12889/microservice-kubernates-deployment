@@ -4,3 +4,6 @@ metadata:
   name: dbconfig
 data:
   database-name: microservices
+  database-userdb-host: userdb-mysql
+  database-userdb-port: 3306
+  
