@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: agregatorservice
+  labels:
+    app: agregatorservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: agregatorservice
+  template:
+    metadata:
+      labels:
+        app: agregatorservice
+    spec:
+      containers:
+      - name: agregatorservice
+        image: satyendransit12/agregatorservice:1.0
+        ports:
+        - containerPort: 8080
+        

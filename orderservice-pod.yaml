@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: userservice
+  name: orderservice
   labels:
-    app: userservice
+    app: orderservice
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: userservice
+      app: orderservice
   template:
     metadata:
       labels:
-        app: userservice
+        app: orderservice
     spec:
       containers:
-      - name: userservice
-        image: satyendransit12/userservice:1.1
+      - name: orderservice
+        image: satyendransit12/orderservice:1.1
         ports:
         - containerPort: 8080
         env:
@@ -29,7 +29,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               name: dbconfig
-              key: database-userdb-host
+              key: database-orderdb-host
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:
