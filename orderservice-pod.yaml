@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: orderservice
-        image: satyendransit12/orderservice:1.1
+        image: satyendransit12/orderservice:1.2.1
         ports:
         - containerPort: 8080
         env:
@@ -30,6 +30,11 @@ spec:
             configMapKeyRef:
               name: dbconfig
               key: database-orderdb-host
+        - name: JAEGER_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: dbconfig
+              key: jaeger-host
         - name: MYSQL_USER
           valueFrom:
             secretKeyRef:

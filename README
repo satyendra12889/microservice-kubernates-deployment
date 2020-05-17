@@ -1,0 +1,19 @@
+#Readme file 
+
+#Set up on kubernetes 
+-- create new cluster from web
+-- add config map 
+
+-- add secrets to cluster 
+-- create jaegar deployment 
+-- create persistence volume claim for order db and user db 
+-- create database deployment for order and user mysql db
+-- create db in the mysql instances
+-- create service for user mysql db and order mysql db
+-- create user service deployment and user service 
+-- create order service deployment and order service 
+-- create agregater service deployment and aggregater service 
+	
+ 
+
+

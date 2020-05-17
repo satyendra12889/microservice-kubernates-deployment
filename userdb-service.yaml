@@ -1,10 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: userdb-mysql
+  name: userdb-mysql-service
 spec:
   ports:
   - port: 3306
+    protocol: TCP
+    targetPort: 3306
   selector:
     app: userdb-mysql
-  clusterIP: None
+  type: ClusterIP
+  

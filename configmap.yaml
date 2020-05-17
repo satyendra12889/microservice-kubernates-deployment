@@ -7,4 +7,5 @@ data:
   database-userdb-host: userdb-mysql
   database-user: root
   database-orderdb-host: orderdb-mysql
+  jaeger-host: jaeber-agent
   
